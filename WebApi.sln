@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{4EF54F61-14F8-4A06-A869-AA468815E68C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{38DCB0FD-839B-4B87-A5E3-0F3D0226D30B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{38DCB0FD-839B-4B87-A5E3-0F3D0226D30B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C670C8B1-AFF1-40C1-BA37-F20E406E2DE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{38DCB0FD-839B-4B87-A5E3-0F3D0226D30B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38DCB0FD-839B-4B87-A5E3-0F3D0226D30B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38DCB0FD-839B-4B87-A5E3-0F3D0226D30B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C670C8B1-AFF1-40C1-BA37-F20E406E2DE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C670C8B1-AFF1-40C1-BA37-F20E406E2DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C670C8B1-AFF1-40C1-BA37-F20E406E2DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C670C8B1-AFF1-40C1-BA37-F20E406E2DE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
