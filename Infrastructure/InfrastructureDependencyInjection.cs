@@ -1,6 +1,3 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore;
 using Infrastructure.Persistence;
 
 namespace Infrastructure.DependencyInjection
