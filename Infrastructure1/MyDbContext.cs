@@ -1,7 +1,5 @@
 ﻿using Domain.Entities;
-using System.Collections.Generic;
-using System.Runtime.Remoting.Contexts;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
 {
@@ -10,7 +8,6 @@ namespace Infrastructure.Persistence
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
         }
-
         public DbSet<WeatherForecast> WeatherForecasts { get; set; }
     }
 }

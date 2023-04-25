@@ -40,7 +40,7 @@ namespace WebApi.Application.Services
                 Summary = f.Summary
             });
 
-            await _weatherForecastRepository.AddRange(weatherForecasts);
+            await _weatherForecastRepository.AddRangeAsync(weatherForecasts);
         }
     }
 }

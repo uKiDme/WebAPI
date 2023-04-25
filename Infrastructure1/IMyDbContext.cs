@@ -1,8 +1,8 @@
-﻿
-using Domain.Entities;
+﻿using Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
 {

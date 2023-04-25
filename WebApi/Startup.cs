@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-using WebApi.Data;
+using Infrastructure;
 namespace WebApi
 {
     public class Startup

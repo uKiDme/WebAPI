@@ -5,13 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApi.Data;
 
 #nullable disable
 
 namespace WebApi.Migrations
 {
-    [DbContext(typeof(MyDbContext))]
     [Migration("20230422064648_creation")]
     partial class creation
     {
