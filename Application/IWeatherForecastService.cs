@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebApi.Application.DTOs;
+using WebApi.Application;
 
 namespace WebApi.Application
 {
