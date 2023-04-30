@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.Repositories;
 
 namespace Infrastructure.DependencyInjection
 {
@@ -14,9 +15,7 @@ namespace Infrastructure.DependencyInjection
                     configuration.GetConnectionString("MyDatabaseConnectionString")
                 )
             );
-
-            services.AddScoped<IMyDbContext>(provider => provider.GetService<MyDbContext>());
-
+            services.AddScoped<IMyDbContext, MyDbContext>();
             return services;
         }
     }

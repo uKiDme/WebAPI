@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 using WebApi.Application.DTOs;
 using WebApi.Application;
 using Domain.Entities;
-using Domain.Interfaces;
-
+using Infrastructure.Repositories;
 namespace WebApi.Application.Services
 {
     public class WeatherForecastService : IWeatherForecastService

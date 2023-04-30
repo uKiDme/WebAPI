@@ -6,14 +6,14 @@ using Infrastructure.Persistence;
 using WebApi.Application;
 using WebApi.Application.Services;
 using Infrastructure.Repositories;
-using Domain.Interfaces;
+using Infrastructure.DependencyInjection;
 
 namespace WebApi
 {
     public class Startup
     {
 
-        public IConfiguration? Configuration { get; }
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -38,12 +38,8 @@ namespace WebApi
         {
             services.AddControllers();
             services.AddScoped<IWeatherForecastService, WeatherForecastService>();
-            //services.AddScoped<Domain.Interfaces.IWeatherForecastRepository, WeatherForecastRepository>();
-            services.AddDbContext<MyDbContext>(options =>
-            {
-                var connectionString = Configuration.GetConnectionString("DefaultConnection");
-                options.UseSqlServer(connectionString);
-            });
+            services.AddScoped<IWeatherForecastRepository, WeatherForecastRepository>();
+            services.AddInfrastructure(Configuration);
         }
     }
 }
