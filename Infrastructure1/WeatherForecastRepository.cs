@@ -11,9 +11,9 @@ namespace Infrastructure.Repositories
 {
     public class WeatherForecastRepository : IWeatherForecastRepository
     {
-        private readonly IMyDbContext _dbContext;
+        private readonly MyDbContext _dbContext;
 
-        public WeatherForecastRepository(IMyDbContext dbContext)
+        public WeatherForecastRepository(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }

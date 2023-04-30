@@ -12,10 +12,9 @@ namespace Infrastructure.DependencyInjection
         {
             services.AddDbContext<MyDbContext>(options =>
                 options.UseSqlServer(
-                    configuration.GetConnectionString("MyDatabaseConnectionString")
+                    configuration.GetConnectionString("DefaultConnection")
                 )
             );
-            services.AddScoped<IMyDbContext, MyDbContext>();
             return services;
         }
     }
