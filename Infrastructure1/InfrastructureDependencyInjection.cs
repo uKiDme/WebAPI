@@ -1,4 +1,8 @@
 ﻿using Infrastructure.Persistence;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Infrastructure.Repositories;
 
 namespace Infrastructure.DependencyInjection
 {
@@ -8,12 +12,9 @@ namespace Infrastructure.DependencyInjection
         {
             services.AddDbContext<MyDbContext>(options =>
                 options.UseSqlServer(
-                    configuration.GetConnectionString("MyDatabaseConnectionString")
+                    configuration.GetConnectionString("DefaultConnection")
                 )
             );
-
-            services.AddScoped<IMyDbContext>(provider => provider.GetService<MyDbContext>());
-
             return services;
         }
     }

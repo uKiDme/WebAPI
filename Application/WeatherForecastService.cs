@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Application.DTOs;
+using WebApi.Application;
 using Domain.Entities;
-using Domain.Interfaces;
-
+using Infrastructure.Repositories;
 namespace WebApi.Application.Services
 {
     public class WeatherForecastService : IWeatherForecastService
@@ -40,7 +40,9 @@ namespace WebApi.Application.Services
                 Summary = f.Summary
             });
 
-            await _weatherForecastRepository.AddRange(weatherForecasts);
+            await _weatherForecastRepository.AddRangeAsync(weatherForecasts);
+            await _weatherForecastRepository.SaveChangesAsync();
         }
+
     }
 }

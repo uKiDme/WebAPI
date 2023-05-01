@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebApi.Application;
 using WebApi.Application.DTOs;
-using WebApi.Application.Interfaces;
 
 namespace WebApi.Controllers
 {
@@ -11,6 +10,9 @@ namespace WebApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private static readonly string[] Summaries = new[] {
+        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"};
+    
         private readonly IWeatherForecastService _weatherForecastService;
 
         public WeatherForecastController(IWeatherForecastService weatherForecastService)
@@ -25,7 +27,13 @@ namespace WebApi.Controllers
             {
                 throw new ArgumentNullException(nameof(_weatherForecastService));
             }
-            return _weatherForecastService.GetWeatherForecasts();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecastDto
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = Random.Shared.Next(-20, 55),
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            })
+           .ToArray();
         }
 
         [HttpPost]

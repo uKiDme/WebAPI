@@ -1,16 +1,13 @@
 ﻿using Domain.Entities;
-using System.Collections.Generic;
-using System.Runtime.Remoting.Contexts;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
 {
-    public class MyDbContext : DbContext, IMyDbContext
+    public class MyDbContext : DbContext
     {
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
         }
-
         public DbSet<WeatherForecast> WeatherForecasts { get; set; }
     }
 }

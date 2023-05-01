@@ -1,17 +1,22 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-using WebApi.Data;
+using Infrastructure;
+using Infrastructure.Persistence;
+using WebApi.Application;
+using WebApi.Application.Services;
+using Infrastructure.Repositories;
+using Infrastructure.DependencyInjection;
+
 namespace WebApi
 {
     public class Startup
     {
 
-        public IConfiguration? Configuration { get; }
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -31,12 +36,11 @@ namespace WebApi
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            //Injections
             services.AddControllers();
-            services.AddDbContext<MyDbContext>(options =>
-            {
-                var connectionString = Configuration.GetConnectionString("DefaultConnection");
-                options.UseSqlServer(connectionString);
-            });
+            services.AddScoped<IWeatherForecastService, WeatherForecastService>();
+            services.AddScoped<IWeatherForecastRepository, WeatherForecastRepository>();   
+            services.AddInfrastructure(Configuration);
         }
     }
 }
