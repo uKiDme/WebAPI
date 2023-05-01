@@ -41,6 +41,7 @@ namespace WebApi.Application.Services
             });
 
             await _weatherForecastRepository.AddRangeAsync(weatherForecasts);
+            await _weatherForecastRepository.SaveChangesAsync();
         }
 
     }
