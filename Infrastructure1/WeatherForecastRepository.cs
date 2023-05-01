@@ -17,7 +17,6 @@ namespace Infrastructure.Repositories
         {
             _dbContext = dbContext;
         }
-
         public async Task AddRangeAsync(IEnumerable<WeatherForecast> forecasts)
         {
             await _dbContext.WeatherForecasts.AddRangeAsync(forecasts);

@@ -36,6 +36,7 @@ namespace WebApi
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            //Injections
             services.AddControllers();
             services.AddScoped<IWeatherForecastService, WeatherForecastService>();
             services.AddScoped<IWeatherForecastRepository, WeatherForecastRepository>();   
