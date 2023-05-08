@@ -32,12 +32,35 @@ namespace WebApi.Application.Services
 
         public async Task AddWeatherForecasts(IEnumerable<WeatherForecastDto> forecasts)
         {
-            var weatherForecasts = forecasts.Select(f => new WeatherForecast
+            var weatherForecasts = forecasts.Select(f =>
             {
-                Date = f.Date,
-                TemperatureC = f.TemperatureC,
-                TemperatureF = (int)(f.TemperatureC * 1.8) + 32,
-                Summary = f.Summary
+                int temperatureC = Random.Shared.Next(0, 43); 
+                int temperatureF = (int)(temperatureC * 1.8) + 32; 
+                string summary;
+                if (temperatureC <= 10)
+                {
+                    summary = "Very Cold";
+                }
+                else if (temperatureC <= 20)
+                {
+                    summary = "Cold";
+                }
+                else if (temperatureC <= 30)
+                {
+                    summary = "Warm";
+                }
+                else
+                {
+                    summary = "Hot";
+                }
+
+                return new WeatherForecast
+                {
+                    Date = DateTime.Now, 
+                    TemperatureC = temperatureC,
+                    TemperatureF = temperatureF,
+                    Summary = summary
+                };
             });
 
             await _weatherForecastRepository.AddRangeAsync(weatherForecasts);
