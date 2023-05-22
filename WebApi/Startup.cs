@@ -7,6 +7,7 @@ using WebApi.Application;
 using WebApi.Application.Services;
 using Infrastructure.Repositories;
 using Infrastructure.DependencyInjection;
+using Infrastructure.ExternalApis;
 
 namespace WebApi
 {
@@ -41,6 +42,7 @@ namespace WebApi
             services.AddScoped<IWeatherForecastService, WeatherForecastService>();
             services.AddScoped<IWeatherForecastRepository, WeatherForecastRepository>();   
             services.AddInfrastructure(Configuration);
+            services.AddScoped<OpenMeteoApiClient>();
         }
     }
 }
