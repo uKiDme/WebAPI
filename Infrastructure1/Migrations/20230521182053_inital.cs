@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Migration1 : Migration
+    public partial class inital : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +20,7 @@ namespace Infrastructure.Migrations
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TemperatureC = table.Column<int>(type: "int", nullable: false),
                     TemperatureF = table.Column<int>(type: "int", nullable: false),
-                    Summary = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Summary = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
