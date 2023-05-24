@@ -6,15 +6,19 @@ using WebApi.Application.DTOs;
 using WebApi.Application;
 using Domain.Entities;
 using Infrastructure.Repositories;
+using Infrastructure.ExternalApis;
+
 namespace WebApi.Application.Services
 {
     public class WeatherForecastService : IWeatherForecastService
     {
         private readonly IWeatherForecastRepository _weatherForecastRepository;
+        private readonly OpenMeteoApiClient _openMeteoApiClient;
 
-        public WeatherForecastService(IWeatherForecastRepository weatherForecastRepository)
+        public WeatherForecastService(IWeatherForecastRepository weatherForecastRepository,OpenMeteoApiClient openMeteoApiClient)
         {
             _weatherForecastRepository = weatherForecastRepository;
+            _openMeteoApiClient = openMeteoApiClient;
         }
 
         public IEnumerable<WeatherForecastDto> GetWeatherForecasts()
@@ -66,6 +70,11 @@ namespace WebApi.Application.Services
             await _weatherForecastRepository.AddRangeAsync(weatherForecasts);
             await _weatherForecastRepository.SaveChangesAsync();
         }
-
+        public async Task<string?> GetExternalWeatherForecast(double latitude, double longitude)
+        {
+            // testing manual values
+            string? forecast = await _openMeteoApiClient.GetWeatherForecast(38.020258, 23.692641);
+            return forecast;
+        }
     }
 }

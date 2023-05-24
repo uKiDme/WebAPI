@@ -46,5 +46,11 @@ namespace WebApi.Controllers
             await _weatherForecastService.AddWeatherForecasts(forecasts);
             return Ok();
         }
+        [HttpGet("external")]
+        public async Task<IActionResult> GetExternalWeatherForecast(double latitude, double longitude)
+        {
+            var forecast = await _weatherForecastService.GetExternalWeatherForecast(latitude, longitude);
+            return Ok(forecast);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using RestSharp;
+using System.Threading.Tasks;
 
 namespace Infrastructure.ExternalApis
 {
@@ -6,7 +7,7 @@ namespace Infrastructure.ExternalApis
     {
         private readonly string apiUrl = "https://api.open-meteo.com/v1/forecast";
 
-        public string? GetWeatherForecast(double latitude, double longitude)
+        public async Task<string> GetWeatherForecast(double latitude, double longitude)
         {
             var client = new RestClient(apiUrl);
             var request = new RestRequest();
@@ -15,7 +16,7 @@ namespace Infrastructure.ExternalApis
             request.AddParameter("longitude", longitude);
             request.AddParameter("current_weather", true);
 
-            var response = client.Execute(request);
+            var response = await client.ExecuteAsync(request);
             if (response.IsSuccessful)
             {
                 return response.Content;

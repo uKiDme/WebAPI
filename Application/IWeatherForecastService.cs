@@ -9,5 +9,7 @@ namespace WebApi.Application
     {
         IEnumerable<WeatherForecastDto> GetWeatherForecasts();
         Task AddWeatherForecasts(IEnumerable<WeatherForecastDto> forecasts);
+        Task<string?> GetExternalWeatherForecast(double latitude, double longitude);
     }
 }
+
