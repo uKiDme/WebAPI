@@ -6,8 +6,12 @@ namespace Infrastructure.ExternalApis
     public class OpenMeteoApiClient
     {
         private readonly string apiUrl = "https://api.open-meteo.com/v1/forecast";
-
-        public async Task<string> GetWeatherForecast(double latitude, double longitude)
+        private readonly ApiResponseParser apiResponseParser;
+        public OpenMeteoApiClient(ApiResponseParser apiResponseParser)
+        {
+            this.apiResponseParser = apiResponseParser;
+        }
+        public async Task<Dictionary<string, object>?> GetWeatherForecast(double latitude, double longitude)
         {
             var client = new RestClient(apiUrl);
             var request = new RestRequest();
@@ -19,7 +23,13 @@ namespace Infrastructure.ExternalApis
             var response = await client.ExecuteAsync(request);
             if (response.IsSuccessful)
             {
-                return response.Content;
+                string? apiResponse = response.Content;
+                if (string.IsNullOrEmpty(apiResponse))
+                {
+                    return null;
+                }
+                var parsedResponse = apiResponseParser.ParseApiResponse(apiResponse);
+                return parsedResponse;
             }
             else
             {

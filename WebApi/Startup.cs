@@ -8,6 +8,9 @@ using WebApi.Application.Services;
 using Infrastructure.Repositories;
 using Infrastructure.DependencyInjection;
 using Infrastructure.ExternalApis;
+using Application.MappingProfiles;
+using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WebApi
 {
@@ -43,6 +46,7 @@ namespace WebApi
             services.AddScoped<IWeatherForecastRepository, WeatherForecastRepository>();   
             services.AddInfrastructure(Configuration);
             services.AddScoped<OpenMeteoApiClient>();
+            services.AddAutoMapper(typeof(Startup));
         }
     }
 }
