@@ -11,7 +11,9 @@ namespace Infrastructure.ExternalApis
             {
                 return null;
             }
+
             var parsedResponse = JsonConvert.DeserializeObject<Dictionary<string, object>>(apiResponse);
+            //change to returned type data.
             return parsedResponse;
         }
     }
