@@ -10,11 +10,14 @@ namespace Infrastructure.DependencyInjection
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            // Register the DbContext with the specified connection string
             services.AddDbContext<MyDbContext>(options =>
                 options.UseSqlServer(
                     configuration.GetConnectionString("DefaultConnection")
                 )
             );
+
+            // Return the updated services collection
             return services;
         }
     }
