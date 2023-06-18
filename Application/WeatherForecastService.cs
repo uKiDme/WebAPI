@@ -74,27 +74,11 @@ namespace WebApi.Application.Services
         }
         public async Task<string?> GetExternalWeatherForecast(double latitude, double longitude)
         {
-            Dictionary<string, object>? forecastData = await _openMeteoApiClient.GetWeatherForecast(latitude, longitude);
-            if (forecastData != null)
-            {
-                if (forecastData.TryGetValue("current_weather", out object? currentWeatherObject) && currentWeatherObject is Dictionary<string, object> currentWeather)
-                {
-                    if (currentWeather.TryGetValue("time", out object? forecastTime) && forecastTime is string forecastTimeString)
-                    {
-                        return forecastTimeString;
-                    }
-                }
-                return null;
-            }
-            else
-            {
-                return null;
-            }
-            // testing manual values
-            //string? forecast = await _openMeteoApiClient.GetWeatherForecast(38.020258, 23.692641);
-            //return forecast;
+            string? forecast = await _openMeteoApiClient.GetWeatherForecast(latitude, longitude);
+            return forecast;
         }
-        public  MeteoApiForecastDto MapToMeteoApiForecastDto(Dictionary<string, object> forecastData)
+
+        public MeteoApiForecastDto MapToMeteoApiForecastDto(Dictionary<string, object> forecastData)
         {
             var forecastDto = _mapper.Map<MeteoApiForecastDto>(forecastData);
             return forecastDto;

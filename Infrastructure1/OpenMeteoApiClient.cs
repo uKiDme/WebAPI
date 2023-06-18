@@ -11,7 +11,7 @@ namespace Infrastructure.ExternalApis
         {
             this.apiResponseParser = apiResponseParser;
         }
-        public async Task<Dictionary<string, object>?> GetWeatherForecast(double latitude, double longitude)
+        public async Task<string?> GetWeatherForecast(double latitude, double longitude)
         {
             var client = new RestClient(apiUrl);
             var request = new RestRequest();

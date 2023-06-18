@@ -47,6 +47,8 @@ namespace WebApi
             services.AddInfrastructure(Configuration);
             services.AddScoped<OpenMeteoApiClient>();
             services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<ApiResponseParser>();
+
         }
     }
 }
